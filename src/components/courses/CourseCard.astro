@@ -1,0 +1,28 @@
+---
+import type { Course } from '../../types/course';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<a href={`/rgpv-notes/${course.slug}`} class="block">
+  <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
+    <div class="p-6">
+      <div class="text-3xl mb-4">{course.icon}</div>
+      <h3 class="text-xl font-semibold text-primary mb-2">{course.name}</h3>
+      {course.specializations && (
+        <div class="space-y-2 mt-4">
+          <p class="text-sm font-medium text-slate-600">Specializations:</p>
+          <ul class="space-y-1">
+            {course.specializations.map(spec => (
+              <li class="text-sm text-slate-500">• {spec}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+</a>

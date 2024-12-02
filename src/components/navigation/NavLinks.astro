@@ -1,0 +1,18 @@
+---
+import NavLink from './NavLink.astro';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'RGPV Notes', href: '/rgpv-notes' },
+  { label: 'Shivani Books', href: '/shivani-books' },
+  { label: 'GATE', href: '/gate' },
+  { label: 'JEE', href: '/jee' },
+  { label: 'Premium', href: '/premium' },
+];
+---
+
+<div class="hidden sm:flex sm:items-center sm:space-x-8">
+  {navItems.map(item => (
+    <NavLink {...item} />
+  ))}
+</div>

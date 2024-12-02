@@ -1,0 +1,27 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import SemesterGrid from '../../../components/courses/SemesterGrid.astro';
+import { courses } from '../../../data/courses';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  return courses.map(course => ({
+    params: { course: course.slug },
+    props: { course }
+  }));
+}) satisfies GetStaticPaths;
+
+const { course } = Astro.props;
+---
+
+<MainLayout title={course.name}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-4xl font-bold text-primary mb-2">{course.name}</h1>
+    {course.specializations && (
+      <p class="text-lg text-slate-600 mb-8">
+        Specializations: {course.specializations.join(', ')}
+      </p>
+    )}
+    <SemesterGrid courseSlug={course.slug} />
+  </div>
+</MainLayout>

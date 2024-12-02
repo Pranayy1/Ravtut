@@ -1,0 +1,47 @@
+---
+import '@fontsource/poppins';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="RavTut - Educational Resources for RGPV Students" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | RavTut</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 font-poppins">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary: #334155;
+    --primary-dark: #1e293b;
+    --accent: #3b82f6;
+    --accent-dark: #2563eb;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: white;
+  }
+</style>

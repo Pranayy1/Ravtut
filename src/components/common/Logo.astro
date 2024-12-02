@@ -1,0 +1,15 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "w-10 h-10" } = Astro.props;
+---
+
+<img 
+  src="/images/logo.png" 
+  alt="RavTut Logo" 
+  class={className}
+  width="40"
+  height="40"
+/>

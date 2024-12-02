@@ -1,0 +1,18 @@
+---
+import SubjectCard from './SubjectCard.astro';
+import { getSubjects } from '../../utils/subjectUtils';
+
+interface Props {
+  courseSlug: string;
+  semester: string;
+}
+
+const { courseSlug, semester } = Astro.props;
+const subjects = getSubjects(courseSlug, semester);
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {subjects.map(subject => (
+    <SubjectCard subject={subject} />
+  ))}
+</div>

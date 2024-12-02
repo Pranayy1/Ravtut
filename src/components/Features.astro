@@ -1,0 +1,40 @@
+---
+import FeatureCard from './features/FeatureCard.astro';
+
+const features = [
+  {
+    title: 'RGPV Notes',
+    description: 'Semester-wise study materials covering all major subjects and topics.',
+    icon: '📚'
+  },
+  {
+    title: 'GATE Preparation',
+    description: 'Comprehensive resources and practice materials for GATE aspirants.',
+    icon: '🎯'
+  },
+  {
+    title: 'JEE Materials',
+    description: 'Quality study materials and mock tests for JEE preparation.',
+    icon: '📝'
+  },
+  {
+    title: 'Premium Content',
+    description: 'Access exclusive resources, solved papers, and video lectures.',
+    icon: '⭐'
+  }
+];
+---
+
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+      What We Offer
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map(feature => (
+        <FeatureCard {...feature} />
+      ))}
+    </div>
+  </div>
+</section>

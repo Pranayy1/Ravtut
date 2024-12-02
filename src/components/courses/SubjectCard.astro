@@ -1,0 +1,32 @@
+---
+import type { Subject } from '../../types/course';
+
+interface Props {
+  subject: Subject;
+}
+
+const { subject } = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-sm p-6">
+  <h3 class="text-xl font-semibold text-primary mb-2">{subject.name}</h3>
+  <p class="text-sm text-slate-500 mb-4">Code: {subject.code}</p>
+  
+  <div class="space-y-3">
+    {subject.resources.map(resource => (
+      <a
+        href={resource.url}
+        class="block bg-slate-50 p-3 rounded-lg hover:bg-slate-100 transition-colors"
+      >
+        <div class="flex items-center">
+          <span class="text-lg mr-3">
+            {resource.type === 'notes' && '📝'}
+            {resource.type === 'book' && '📚'}
+            {resource.type === 'syllabus' && '📋'}
+          </span>
+          <span class="text-sm text-slate-600">{resource.name}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>

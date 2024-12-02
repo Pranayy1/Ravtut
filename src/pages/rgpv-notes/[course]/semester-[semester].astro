@@ -1,0 +1,36 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import SubjectList from '../../../components/courses/SubjectList.astro';
+import { courses } from '../../../data/courses';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  const paths = [];
+  courses.forEach(course => {
+    for (let semester = 1; semester <= 8; semester++) {
+      paths.push({
+        params: { 
+          course: course.slug,
+          semester: `semester-${semester}`
+        },
+        props: { course, semester }
+      });
+    }
+  });
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { course, semester } = Astro.props;
+const semesterNumber = semester.split('-')[1];
+---
+
+<MainLayout title={`${course.name} - Semester ${semesterNumber}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-8">
+      <a href={`/rgpv-notes/${course.slug}`} class="text-accent hover:text-accent-dark">← Back to Course</a>
+    </div>
+    <h1 class="text-4xl font-bold text-primary mb-2">{course.name}</h1>
+    <h2 class="text-2xl text-slate-600 mb-8">Semester {semesterNumber}</h2>
+    <SubjectList courseSlug={course.slug} semester={semesterNumber} />
+  </div>
+</MainLayout>

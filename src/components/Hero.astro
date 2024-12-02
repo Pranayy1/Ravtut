@@ -1,0 +1,25 @@
+---
+import PrimaryButton from './buttons/PrimaryButton.astro';
+import SecondaryButton from './buttons/SecondaryButton.astro';
+---
+
+<section class="relative overflow-hidden bg-gradient-to-b from-slate-100 to-white py-24">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-[linear-gradient(30deg,var(--accent)_0%,transparent_70%)] opacity-10"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <span class="text-accent font-medium mb-4 block">Your Learning Journey Starts Here</span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
+        Your Gateway to<br/>Academic Excellence
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Comprehensive study materials for RGPV University students, GATE aspirants, and JEE candidates.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 items-center">
+        <PrimaryButton href="/rgpv-notes" label="Explore Notes" />
+        <SecondaryButton href="/premium" label="Go Premium" />
+      </div>
+    </div>
+  </div>
+</section>
